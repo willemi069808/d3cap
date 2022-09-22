@@ -10,17 +10,22 @@ annotate service.Simulations with @(UI.LineItem : [
         $Type : 'UI.DataField',
         Label : 'Name',
         Value : name,
-    },
+    }
 ]);
 
-annotate service.Simulations with @(
-    UI.HeaderInfo                  : {
+annotate service.Simulations with @(UI : {
+    HeaderInfo                     : {
         TypeName       : 'Chart',
         TypeNamePlural : 'Charts',
         Title          : {Value : name},
         TypeImageUrl   : 'sap-icon://pie-chart'
     },
-    UI.FieldGroup #GeneratedGroup1 : {
+    Facets                         : [{
+        $Type  : 'UI.ReferenceFacet',
+        Label  : 'General Information',
+        Target : '@UI.FieldGroup#GeneralInformation',
+    }, ],
+    FieldGroup #GeneralInformation : {
         $Type : 'UI.FieldGroupType',
         Data  : [
             {
@@ -34,11 +39,5 @@ annotate service.Simulations with @(
                 Value : name,
             },
         ],
-    },
-    UI.Facets                      : [{
-        $Type  : 'UI.ReferenceFacet',
-        ID     : 'GeneratedFacet1',
-        Label  : 'General Information',
-        Target : '@UI.FieldGroup#GeneratedGroup1',
-    }, ]
-);
+    }
+});

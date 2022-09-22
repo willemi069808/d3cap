@@ -1,1 +1,1 @@
-using from './elementsapp/annotations';
+using from './chartsapp/annotations';

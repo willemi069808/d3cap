@@ -45,6 +45,6 @@
     }
   },
   "sapux": [
-    "app/elementsapp"
+    "app/chartsapp"
   ]
 }

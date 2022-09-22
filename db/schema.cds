@@ -1,25 +1,21 @@
 namespace db;
 
+@readonly
 entity Simulations {
-    key id             : Integer;
-        name           : String;
-        SVGObject      : String;
+    key id                : String;
+        name              : String;
+        virtual SVGObject : String @Core.Computed default '';
+};
 
-        BollingerChart : Composition of many data_BollingerChart
-                             on BollingerChart.simulation = $self;
-        SankeyChart    : Composition of many data_SankeyChart
-                             on SankeyChart.simulation = $self;
-}
-
+@readonly
 entity data_BollingerChart {
-    simulation : Association to Simulations;
-    date       : Date;
-    close      : Double;
-}
+    date  : Date;
+    close : Double;
+};
 
+@readonly
 entity data_SankeyChart {
-    simulation : Association to Simulations;
-    source     : String;
-    target     : String;
-    value      : Double;
-}
+    source : String;
+    target : String;
+    value  : Double;
+};
